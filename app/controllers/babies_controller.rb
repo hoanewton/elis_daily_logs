@@ -10,7 +10,7 @@ class BabiesController < ApplicationController
 
 	def create
   	@baby = Baby.create(baby_params)
-  	# @baby.user_id = session[:current_user]
+  	@baby.user_id = session[:current_user]
   	if @baby.save
   		redirect_to babies_path
   	else
