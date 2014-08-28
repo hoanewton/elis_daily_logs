@@ -1,0 +1,19 @@
+<h4><%= link_to	"Add Baby", new_baby_path %></h4>
+<h2>Little Angels</h2>
+
+<% @babies.sort_by	{ |baby| baby.created_at }.reverse.each do |baby| %>
+	<ul>
+		<h4><%= link_to baby.first_name, baby_path(baby) %></h4>
+		<%= image_tag baby.photo.url(:thumb) %><br>
+		Name: <%= baby.first_name %> 
+		<%= baby.last_name %>
+		Age: <%= baby.age %>  Gender: <%= baby.gender %><br>
+		Special Note <%= baby.special_condition %><br>
+		Parent: <%= baby.parent_name %> 
+		Parent contact infomation: <%= baby.parent_contact %><br>	
+	</ul>
+	<%= link_to "Update", edit_baby_path(baby) %>
+	<%= link_to "Remove", baby_path(baby), method: :delete %>
+	<hr>
+
+<% end %>

@@ -1,0 +1,41 @@
+<h2>Add a new Baby</h2>
+<ul>
+	<% @baby.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+</ul>
+
+<%= form_for @baby do |f| %>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+	<br>
+
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+	<br>
+
+	<%= f.label :gender %>
+	<%= f.text_field :gender %>
+	<br>
+
+	<%= f.label :age %>
+	<%= f.text_field :age %>
+	<br>
+
+	<%= f.label :parent_name %>
+	<%= f.text_field :parent_name %>
+	<br>
+
+	<%= f.label :parent_contact %>
+	<%= f.text_field :parent_contact %>
+	<br>
+
+	<%= f.label :special_condition %>
+	<%= f.text_field :special_condition %>
+	<br>
+
+	<%= f.label :photo %>
+	<%= f.file_field :photo %>
+	
+	<%= f.submit "Update" %>
+<% end %>
