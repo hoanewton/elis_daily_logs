@@ -21,8 +21,8 @@ class BabiesController < ApplicationController
 
 	def show
 		@baby = Baby.find(params[:id])
-		# @days = @baby.days
-		# @day = Day.new
+		@days = @baby.days
+		@day = Day.new
 	end
 
 	def edit
