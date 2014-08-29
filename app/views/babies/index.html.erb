@@ -8,9 +8,9 @@
 		Name: <%= baby.first_name %> 
 		<%= baby.last_name %>
 		Age: <%= baby.age %>  Gender: <%= baby.gender %><br>
-		Special Note <%= baby.special_condition %><br>
-		Parent: <%= baby.parent_name %> 
-		Parent contact infomation: <%= baby.parent_contact %><br>	
+		Special note: <%= baby.special_condition %><br>
+		Parent: <%= baby.parent_name %> <br>
+		Parent email: <%= baby.parent_email %><br>	
 	</ul>
 	<%= link_to "Update", edit_baby_path(baby) %>
 	<%= link_to "Remove", baby_path(baby), method: :delete %>

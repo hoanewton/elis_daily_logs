@@ -6,36 +6,44 @@
 </ul>
 
 <%= form_for @baby do |f| %>
-	<%= f.label :first_name %>
+	<%= f.label :first_name %><br>
 	<%= f.text_field :first_name %>
 	<br>
 
-	<%= f.label :last_name %>
+	<%= f.label :last_name %><br>
 	<%= f.text_field :last_name %>
 	<br>
 
-	<%= f.label :gender %>
+	<%= f.label :gender %><br>
 	<%= f.text_field :gender %>
 	<br>
 
-	<%= f.label :age %>
+	<%= f.label :age %><br>
 	<%= f.text_field :age %>
 	<br>
 
-	<%= f.label :parent_name %>
+	<%= f.label :parent_name %><br>
 	<%= f.text_field :parent_name %>
 	<br>
 
-	<%= f.label :parent_contact %>
-	<%= f.text_field :parent_contact %>
+	<%= f.label :parent_email %><br>
+	<%= f.email_field :parent_email %>
 	<br>
 
-	<%= f.label :special_condition %>
+	<%= f.label :nanny_name %><br>
+	<%= f.text_field :nanny_name %>
+	<br>
+
+	<%= f.label :nanny_email %><br>
+	<%= f.email_field :nanny_email %>
+	<br>
+
+	<%= f.label :special_condition %><br>
 	<%= f.text_field :special_condition %>
 	<br>
 
-	<%= f.label :photo %>
-	<%= f.file_field :photo %>
+	<%= f.label :photo %><br>
+	<%= f.file_field :photo %><br>
 	
 	<%= f.submit "Add Baby" %>
 <% end %>

@@ -9,9 +9,10 @@ class BabiesController < ApplicationController
 	end
 
 	def create
-  	@baby = Baby.create(baby_params)
-  	@baby.user_id = session[:current_user]
+  	@baby = Baby.new(baby_params)
+  	# user = session[:current_user]
   	if @baby.save
+  		@baby.users << current_user
   		redirect_to babies_path
   	else
   		render :new
@@ -48,7 +49,7 @@ class BabiesController < ApplicationController
 	private
 
 	def baby_params
-	  params.require(:baby).permit(:photo, :first_name, :last_name, :gender, :age, :parent_name, :parent_contact, :special_condition )
+	  params.require(:baby).permit(:photo, :first_name, :last_name, :gender, :age, :parent_name, :parent_email, :nanny_name, :nanny_email, :special_condition )
 	end
 
 end

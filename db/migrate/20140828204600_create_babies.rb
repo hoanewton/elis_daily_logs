@@ -5,8 +5,12 @@ class CreateBabies < ActiveRecord::Migration
     	t.string :last_name
     	t.string :gender
     	t.integer :age
+        
     	t.string :parent_name
-    	t.text 	:parent_contact
+    	t.text 	:parent_email
+        t.text  :nanny_name
+        t.text  :nanny_email
+
     	t.string :special_condition
 
     	t.timestamps
