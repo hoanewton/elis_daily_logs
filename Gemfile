@@ -39,7 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 group :production do
    gem 'pg'
- end
+end
 
 gem 'rails_12factor'
 
