@@ -2,7 +2,7 @@
 
 <p>
   <strong>Date:</strong>
-  <%= @day.date %>
+  <%= @day.date.to_date %>
 </p>
 
 <p>
@@ -21,4 +21,4 @@
 </p>
 
 <%= link_to 'Edit', edit_day_path(@day) %> |
-<%= link_to 'Back', days_path %>
+<%= link_to 'Back', baby_days_path(@baby) %>
