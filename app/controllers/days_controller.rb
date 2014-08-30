@@ -34,7 +34,7 @@ class DaysController < ApplicationController
     @day.baby_id = @baby.id
     respond_to do |format|
       if @day.save
-        format.html { redirect_to baby_days_path, notice: 'Day was successfully created.' }
+        format.html { redirect_to baby_path(@baby), notice: 'Day was successfully created.' }
         format.json { render :show, status: :created, location: @day }
       else
         format.html { render :new }
