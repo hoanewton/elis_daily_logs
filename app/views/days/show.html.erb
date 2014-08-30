@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<button><a href="#">Add Nap</a></button><hr>
 <p>
   <strong>Date:</strong>
   <%= @day.date.to_date %>
@@ -20,5 +20,5 @@
   <%= @day.note %>
 </p>
 
-<%= link_to 'Edit', edit_day_path(@day) %> |
-<%= link_to 'Back', baby_days_path(@baby) %>
+<button><%= link_to 'Edit', edit_day_path(@day) %></button>
+<button><%= link_to 'Back', baby_days_path(@baby) %></button>

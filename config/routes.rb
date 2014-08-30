@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   resources :babies do 
-  	resources :days, shallow: true
+  	resources :days, shallow: true do
+  		resources :nap, except: [:show, :new, :edit, :index], shallow: true
+  	end
   end
 
 
