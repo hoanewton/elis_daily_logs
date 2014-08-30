@@ -6,6 +6,7 @@ class NapsController < ApplicationController
   	@nap = Nap.find(params[:id])
   	@day = @nap.day
     @naps = @day.naps
+    render status: 200, json: @nap.to_json
   end
 
   # GET /naps/1
@@ -21,52 +22,58 @@ class NapsController < ApplicationController
   end
 
   # GET /naps/1/edit
-  # def edit
-  # end
+  def edit
+  end
 
-  # # POST /naps
-  # # POST /naps.json
-  # def create
-  #   @nap = Nap.new(nap_params)
+  # POST /naps
+  # POST /naps.json
+  def create
+    @nap = Nap.new(nap_params)
 
-  #   # respond_to do |format|
-  #     if @nap.save
+    respond_to do |format|
+      if @nap.save
+        day = Day.find(params[:day_id])
+        day.naps << @nap 
+        redirect_to day_path(@nap.day_id)
+        format.html { redirect_to @nap, notice: 'nap was successfully created.' }
+        format.json { render :show, status: :created, location: @nap }
+      else
+        format.html { render :new }
+        format.json { render json: @nap.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  #       day = Day.find(params[:day_id])
-  #       day.naps << @nap 
-  #       redirect_to day_path(@nap.day_id)
-  #       # format.html { redirect_to @nap, notice: 'nap was successfully created.' }
-  #     #   # format.json { render :show, status: :created, location: @nap }
-  #     # else
-  #     #   format.html { render :new }
-  #     #   format.json { render json: @nap.errors, status: :unprocessable_entity }
-  #     end
-  #   # end
-  # end
+  # PATCH/PUT /naps/1
+  # PATCH/PUT /naps/1.json
+  def update
+  	@baby = Baby.find(params[:baby_id])
+    @day = Day.find(params[:day_id])
+    @nap = @day.naps.find(params[:id])
+    respond_to do |format|
+      if @nap.update(nap_params)
+        format.html { redirect_to @nap, notice: 'nap was successfully updated.' }
+        format.json { render :show, status: :ok, location: @nap }
+      else
+        format.html { render :edit }
+        format.json { render json: @nap.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  # # PATCH/PUT /naps/1
-  # # PATCH/PUT /naps/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @nap.update(nap_params)
-  #       format.html { redirect_to @nap, notice: 'nap was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @nap }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @nap.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # DELETE /naps/1
-  # DELETE /naps/1.json
+  DELETE /naps/1
+  DELETE /naps/1.json
   def destroy
+  	f update
+  	@baby = Baby.find(params[:baby_id])
+    @day = Day.find(params[:day_id])
+    @nap = @day.naps.find(params[:id])
     @nap.destroy
     redirect_to day_path(@nap.day_id)
-    # respond_to do |format|
-      # format.html { redirect_to naps_url, notice: 'nap was successfully destroyed.' }
-      # format.json { head :no_content }
-    # end
+    respond_to do |format|
+      format.html { redirect_to naps_url, notice: 'nap was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
