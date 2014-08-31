@@ -29,11 +29,12 @@
 App = {
   Models: {},
   Views: {},
-  Collections: {}
+  Collections: {},
+  Routers: {}
 };
 
 $(document).ready(function(){
-  App.router = new App.Router();
+  App.Routers.napRouter = new App.Routers.NapRouter();
   Backbone.history.start();
 });
 
