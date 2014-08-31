@@ -1,30 +1,42 @@
-<p id="notice"><%= notice %></p>
-<button><a href="#">Add Nap</a></button><hr>
-<p>
-  <strong>Date:</strong>
-  <%= @day.date.to_date %>
-</p>
+<div class='container'>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @day.title %>
-</p>
+	<button><a href="#">Add Nap</a></button>
+	<button><a href="#">Add Meal</a></button>
+	<button><a href="#">Add Diaper</a></button>
+	<button><a href="#">Add Activity</a></button><hr>
 
-<p>
-  <strong>Status:</strong>
-  <%= @day.status %>
-</p>
+	<p>
+	  <strong>Date:</strong>
+	  <%= @day.date.to_date %>
+	</p>
 
-<p>
-  <strong>Note:</strong>
-  <%= @day.note %>
-</p>
+	<p>
+	  <strong>Title:</strong>
+	  <%= @day.title %>
+	</p>
 
-<button><%= link_to 'Edit', edit_day_path(@day) %></button>
-<button><%= link_to 'Back', baby_days_path(@baby) %></button>
+	<p>
+	  <strong>Status:</strong>
+	  <%= @day.status %>
+	</p>
 
-<div class='nap-list'>Naps</div>
+	<p>
+	  <strong>Note:</strong>
+	  <%= @day.note %>
+	</p>
 
+	<button><%= link_to 'Edit', edit_day_path(@day) %></button>
+	<button><%= link_to 'Back', baby_days_path(@day) %></button><hr>
 
+	<div class='nap-list'>Naps</div><hr>
+
+	<div class='meal-list'>Meals</div><hr>
+
+	<div class='diaper-list'>Diapers</div><hr>
+
+	<div class='activity-list'>Activities</div><hr>
+
+</div>
 
 

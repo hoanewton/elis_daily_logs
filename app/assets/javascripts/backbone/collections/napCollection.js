@@ -1,6 +1,6 @@
 App.Collections.NapsCollection = Backbone.Collection.extend({
   model: App.NapModel,
-  url: '/days/:day_id',
+  url: '/#nap',
   initialize: function() {
     console.log('New Nap Collection');
   },

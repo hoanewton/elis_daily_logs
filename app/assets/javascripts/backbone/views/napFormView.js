@@ -1,56 +1,36 @@
 App.Views.NapFormView = Backbone.View.extend({
-	id: 'nap',
-	tagName: 'div',
+	el: '#nap-form',
 
 	initialize: function () {
-		console.log('created a napView')
-		this.template = HandlebarsTemplates['naps/nap'];
-		this.editTemplate = HandlebarsTemplates['naps/editForm'];
-		this.listenTo(this.model, 'change', this.render);
-		this.listenTo(this.model, 'destroy', this.remove);
+		this.template = HandlebarsTemplates['naps/form'];
 		this.render();
+	},
+
+	events: {
+		'click button.create': 'addNap',
+		'click button.cancel': 'cancel'
 	},
 
 	render: function () {
 		this.$el.empty();
-		this.$el.html(this.template(this.model.toJSON()));
+		this.$el.html(this.template());
 	},
 
-	events: {
-		'click button.delete': 'deleteView',
-		'click button.edit': 'editNap',
-		'click button.edit-nap': 'updateNap',
-		'click button.cancel': 'cancel'
-	},
-
-	deleteView: function () {
-		this.model.destroy();
-	},
-
-	editNap: function () {
-		App.Routers.napRouter.navigate('naps/' + this.model.id + '/edit');
-		this.$el.html(this.editTemplate(this.model.toJSON()));
-		this.$('.edit-nap').show();
-	},
-
-	updateNap: function () {
-		var newData = {
-			start_time: 	this.$("input#start_time").val(),
-			end_time: 		this.$("input#end_time").val(),
-			description: 	this.$("input#description").val()
+	addNap: function () {
+		var formData = {
+			author: 	$('#author').val(),
+			title: 		$('#title').val(),
+			content: 	$('#content').val()
 		};
-		this.model.save(newData, {success: function () {
-			console.log('updated')
+		App.Collections.napsCollection.create(formData, {success: function () { 
+			$('input').val('');
+			$('#nap-form').hide(100);
 			App.Routers.napRouter.navigate('');
-			this.$('.edit-nap').fadeOut(500);
-		}.bind(this)});
-
+		}
+	});
 	},
-	cancel: function () {
+	cancel: function(){
+		this.$el.fadeOut(200);
 		App.Routers.napRouter.navigate('');
-		this.render();
-		this.$('.edit-nap').fadeOut(500);
-	}
-	
+	}	
 });
-

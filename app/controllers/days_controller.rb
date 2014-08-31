@@ -11,8 +11,6 @@ class DaysController < ApplicationController
   # GET /days/1
   # GET /days/1.json
   def show
-    @baby = Baby.find(@day.baby.id)
-    @days = @baby.days
     @day = Day.find(params[:id])
   end
 

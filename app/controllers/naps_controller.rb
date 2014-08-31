@@ -3,8 +3,7 @@ class NapsController < ApplicationController
 	# GET /naps
   # GET /naps.json
   def index
-  	@nap = Nap.find(params[:id])
-  	@day = @nap.day
+    @day = Day.find(params[:id])
     @naps = @day.naps
     render status: 200, json: @nap.to_json
   end
@@ -17,7 +16,7 @@ class NapsController < ApplicationController
   # GET /naps/new
   def new
   	@baby = Baby.find(params[:baby_id])
-    @day = Day.find(params[:day_id])
+    @day = Day.find(params[:id])
     @nap = Nap.new
   end
 
