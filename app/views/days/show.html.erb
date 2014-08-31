@@ -1,4 +1,4 @@
-<h2><%= @baby.first_name %> <%= @baby.last_name %></h2>
+<h2><%= @baby.first_name %> <%= @baby.last_name %>'s day</h2>
 
 
 <p id="notice"><%= notice %></p>
@@ -24,4 +24,4 @@
 </p>
 
 <button><%= link_to 'Edit', edit_day_path(@day) %></button>
-<button><%= link_to 'Back', baby_days_path(@day) %></button>
+<button><%= link_to 'Back', baby_path(@baby) %></button>

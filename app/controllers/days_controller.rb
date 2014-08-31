@@ -1,17 +1,17 @@
 class DaysController < ApplicationController
-  # before_action :set_day, only: [:show, :edit, :update, :destroy, :index]
+  before_action :set_day, only: [:show, :edit, :update, :destroy]
 
   # GET /days
   # GET /days.json
   def index
     @baby = Baby.find(params[:baby_id])
     @days = @baby.days
+    redirect_to baby_path(@baby)
   end
 
   # GET /days/1
   # GET /days/1.json
   def show
-    # @baby = Baby.find(params[:baby_id])
     @day = Day.find(params[:id])
     @baby = @day.baby
   end
@@ -71,9 +71,9 @@ class DaysController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_day
-    #   @day = Day.find(params[:id])
-    # end
+    def set_day
+      @day = Day.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def day_params
