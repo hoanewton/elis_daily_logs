@@ -1,3 +1,6 @@
+<h2><%= @baby.first_name %> <%= @baby.last_name %></h2>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -20,5 +23,5 @@
   <%= @day.note %>
 </p>
 
-<%= link_to 'Edit', edit_day_path(@day) %> |
-<%= link_to 'Back', baby_days_path(@baby) %>
+<button><%= link_to 'Edit', edit_day_path(@day) %></button>
+<button><%= link_to 'Back', baby_days_path(@day) %></button>
