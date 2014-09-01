@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   resources :babies do 
-  	resources :days, shallow: true
+  	resources :days, shallow: true do
+  		resources :events, only:[:create, :edit, :update, :destroy], :shallow => true 
+  	end
   end
-
-
 end

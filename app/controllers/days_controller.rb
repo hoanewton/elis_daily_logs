@@ -14,6 +14,7 @@ class DaysController < ApplicationController
   def show
     @day = Day.find(params[:id])
     @baby = @day.baby
+    @events = @day.events
   end
 
   # GET /days/new
@@ -25,7 +26,7 @@ class DaysController < ApplicationController
   # GET /days/1/edit
   def edit
      @day = Day.find(params[:id])
-     @baby = @day.baby
+     # @baby = @day.baby
   end
 
   # POST /days
