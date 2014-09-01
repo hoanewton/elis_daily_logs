@@ -1,49 +1,59 @@
 
 <button><%= link_to('New Day', new_baby_day_path(@baby))%></button>
-
-<ul>
-	<h2><%= @baby.first_name %></h2>
-	<h4><%= @baby.last_name %></h4> 
-	<%= image_tag @baby.photo.url(:thumb) %>
-	<br>
-	Age: <%= @baby.age %> 
-	Gender: <%= @baby.gender %><br>
-	Special note: <%= @baby.special_condition %><br>
-	Parent: <%= @baby.parent_name %> <br>
-	Parent email: <%= @baby.parent_email %><br>	
-</ul>
-<!-- <div class="list-group">
-  <p class="list-group-item active">
-    Days  </p>
-  <% @baby.days.each do |day| %>
-  	<a href="#" class="list-group-item"><%= day.date.to_date %> <%= day.title %></a>
-  <% end %>
-</div> -->
-
+<h2><%= @baby.first_name %>  <%= @baby.last_name %> </h2>
+  
+  <%= image_tag @baby.photo.url(:thumb) %>
+  <hr>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr class="active">
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Parent</th>
+        <th>Parent Email</th>
+        <th>Sitter</th>
+        <th>Sitter Email</th>
+        <th>Special Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="active"><%= @baby.gender %></td>
+        <td class="success"><%= @baby.age %></td>
+        <td class="info"><%= @baby.parent_name %></td>
+        <td class="active"><%= @baby.parent_email %></td>
+        <td class="danger"><%= @baby.nanny_name %></td>
+        <td class="success"><%= @baby.nanny_email %></td>
+        <td class="active"><%= @baby.special_condition %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+<h4><%= @baby.first_name %>  <%= @baby.last_name %>'s days</h4>
 <table class='table'>
   <thead>
-    <tr>
+    <tr class='active'>
       <th>Date</th>
       <th>Title</th>
       <th>Status</th>
       <th>Note</th>
-      <th colspan="3"></th>
+      <th>Action</th>
+      <!-- <th colspan="3"></th> -->
     </tr>
   </thead>
 
   <tbody>
     <% @baby.days.each do |day| %>
       <tr>
-        <td><%= link_to day.date.to_date, day_path(day) %></td>
-        <td><%= link_to day.title, day_path(day) %></td>
-        <td><%= day.status %></td>
-        <td><%= day.note %></td>
-        <td><%= link_to 'Show', day_path(day) %></td>
-        <td><%= link_to 'Edit', edit_day_path(day) %></td>
-        <td><%= link_to 'Delete', day_path(day), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='active'><%= link_to day.date.to_date, day_path(day) %></td>
+        <td class='success'><%= link_to day.title, day_path(day) %></td>
+        <td class='info'><%= day.status %></td>
+        <td class='active'><%= day.note %></td>
+        <td class='danger'><%= link_to 'Show', day_path(day) %> | <%= link_to 'Edit', edit_day_path(day) %> | <%= link_to 'Delete', day_path(day), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
