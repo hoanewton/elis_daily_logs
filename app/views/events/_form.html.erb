@@ -11,26 +11,23 @@
     </div>
   <% end %>
 
-
 <h4>Add new Event here</h4>
-  <div class="field">
+<form role='form'>
+  <div class="form-group">
     <%= f.label :start_time %>
     <%= f.time_select :start_time, {ampm: true} %>  <%= f.label :end_time %>
     <%= f.time_select :end_time, {ampm: true} %> 
-  </div>
-  <!-- <div class="field">
-    <%= f.label :end_time %>
-    <%= f.time_select :end_time, {ampm: true} %>
-  </div> -->
-  <div class="field">
     <%= f.label :description %>
     <%= f.select :description, options_for_select(Event.event_types) %>
   </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
+  
+  <div class="form-group">
+    
+    <%= f.label :comment %>
+    <%= f.text_area :comment, :class =>'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+</form> 
 <% end %>

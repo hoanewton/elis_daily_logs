@@ -1,0 +1,50 @@
+
+<ul>
+	<% @baby.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+</ul>
+
+<%= form_for @baby do |f| %>
+	
+	<%= f.label :first_name %><br>
+	<%= f.text_field :first_name, :class =>'form-control' %>
+	</br>
+	
+	<%= f.label :last_name %><br>
+	<%= f.text_field :last_name, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :gender %><br>
+	<%= f.text_field :gender, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :age %><br>
+	<%= f.text_field :age, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :parent_name %><br>
+	<%= f.text_field :parent_name, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :parent_email %><br>
+	<%= f.email_field :parent_email, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :nanny_name %><br>
+	<%= f.text_field :nanny_name, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :nanny_email %><br>
+	<%= f.email_field :nanny_email, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :special_condition %><br>
+	<%= f.text_field :special_condition, :class =>'form-control' %>
+	<br>
+
+	<%= f.label :photo %><br>
+	<%= f.file_field :photo %><br>
+	
+	<%= f.submit "Summit" %> <hr>
+<% end %>
