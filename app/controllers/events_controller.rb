@@ -26,10 +26,12 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @user = current_user
+    @event.user_id = @user.id
 
     # respond_to do |format|
       if @event.save
-
+        @user.events << @event
         day = Day.find(params[:day_id])
         day.events << @event 
         redirect_to day_path(@event.day_id)

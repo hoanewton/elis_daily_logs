@@ -33,16 +33,20 @@ class DaysController < ApplicationController
   # POST /days
   # POST /days.json
   def create
+    @user = current_user
     @baby = Baby.find(params[:baby_id])
     @day = Day.new(day_params)
     @day.baby_id = @baby.id
+    @day.user_id = @user.id
     respond_to do |format|
       if @day.save
+        @baby.days << @day
+        @user.days << @day
         format.html { redirect_to baby_path(@baby), notice: 'Day was successfully created.' }
-        format.json { render :show, status: :created, location: @day }
+        # format.json { render :show, status: :created, location: @day }
       else
         format.html { render :new }
-        format.json { render json: @day.errors, status: :unprocessable_entity }
+        # format.json { render json: @day.errors, status: :unprocessable_entity }
       end
     end
   end
