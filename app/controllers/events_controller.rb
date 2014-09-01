@@ -3,14 +3,14 @@ class EventsController < ApplicationController
 
   # GET /events
   # GET /events.json
-  # def index
-  #   @events = Event.all
-  # end
+  def index
+    @events = Event.all
+  end
 
   # GET /events/1
   # GET /events/1.json
-  # def show
-  # end
+  def show
+  end
 
   # GET /events/new
   def new
@@ -27,33 +27,34 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
-    respond_to do |format|
+    # respond_to do |format|
       if @event.save
 
         day = Day.find(params[:day_id])
         day.events << @event 
         redirect_to day_path(@event.day_id)
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        # format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        # format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        # format.json { render json: @event.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
+    # respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
+      	redirect_to day_path(@event.day_id)
+        # format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        # format.json { render json: @event.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # DELETE /events/1
@@ -61,10 +62,10 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to day_path(@event.day_id)
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

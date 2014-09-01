@@ -1,5 +1,7 @@
-<h2><%= @baby.first_name %> <%= @baby.last_name %>'s day</h2>
+<button><a href="#">Add Event</a></button>
 
+<h2><%= @baby.first_name %> <%= @baby.last_name %>'s day</h2>
+<%= image_tag @baby.photo.url(:thumb) %>
 
 <p id="notice"><%= notice %></p>
 
@@ -23,5 +25,15 @@
   <%= @day.note %>
 </p>
 
-<button><%= link_to 'Edit', edit_day_path(@day) %></button>
-<button><%= link_to 'Back', baby_path(@baby) %></button>
+<button><%= link_to 'Edit Day', edit_day_path(@day) %></button>
+<button><%= link_to 'Back', baby_path(@baby) %></button><hr>
+
+
+<%= render :partial => 'events/form'  %>
+
+<% @day.events.each do |event| %>
+	<% @event = event %>
+	<%= render :partial => 'events/show' %>
+<% end %>
+
+<br>

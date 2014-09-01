@@ -15,6 +15,7 @@ class DaysController < ApplicationController
     @day = Day.find(params[:id])
     @baby = @day.baby
     @events = @day.events
+    @event = Event.new
   end
 
   # GET /days/new

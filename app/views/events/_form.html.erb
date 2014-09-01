@@ -1,0 +1,36 @@
+<%= form_for [@baby, @day, @event] do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<h4>Add new Event here</h4>
+  <div class="field">
+    <%= f.label :start_time %>
+    <%= f.time_select :start_time, {ampm: true} %>  <%= f.label :end_time %>
+    <%= f.time_select :end_time, {ampm: true} %> 
+  </div>
+  <!-- <div class="field">
+    <%= f.label :end_time %>
+    <%= f.time_select :end_time, {ampm: true} %>
+  </div> -->
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
