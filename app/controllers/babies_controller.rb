@@ -1,7 +1,8 @@
 class BabiesController < ApplicationController
 
 	def index
-		@babies = Baby.all
+		@user = current_user
+		@babies = @user.babies
 	end
 
 	def new

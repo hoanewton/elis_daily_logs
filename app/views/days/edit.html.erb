@@ -1,7 +1,7 @@
 <h1>Editing day</h1>
 
 <%= form_for @day do |f| %>
-
+  
   <% if @day.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@day.errors.count, "error") %> prohibited this day from being saved:</h2>

@@ -26,8 +26,9 @@ class DaysController < ApplicationController
 
   # GET /days/1/edit
   def edit
-     @day = Day.find(params[:id])
-     # @baby = @day.baby
+    @day = Day.find(params[:id])
+    @baby = @day.baby
+    @days = @baby.days
   end
 
   # POST /days
@@ -68,9 +69,11 @@ class DaysController < ApplicationController
   # DELETE /days/1
   # DELETE /days/1.json
   def destroy
+    @day = Day.find(params[:id])
+    @baby = @day.baby
     @day.destroy
     respond_to do |format|
-      format.html { redirect_to days_url, notice: 'Day was successfully destroyed.' }
+      format.html { redirect_to baby_path(@baby), notice: 'Day was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

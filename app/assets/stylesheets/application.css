@@ -21,3 +21,8 @@
  .new-day-form {
  	display: none;
  }
+
+ .float-right {
+ 	float: right;
+ 	margin-right: 5px;
+ }

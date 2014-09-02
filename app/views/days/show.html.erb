@@ -1,6 +1,9 @@
 <!-- <button><a href="#">Add Event</a></button> -->
-<h2><%= @baby.first_name %> <%= @baby.last_name %>'s day</h2>
-<%= image_tag @baby.photo.url(:thumb) %>
+<h2><%= @baby.first_name %>'s day</h2>
+<%= image_tag @baby.photo.url(:thumb) %>  
+<button class='btn btn-primary day-summary float-right'>Day Summary</button>
+<button class='btn btn-success float-right'><%= link_to "All Days", baby_path(@baby) %></button>
+<hr>
 <div class="table-responsive">
   <table class="table">
   	<thead>
@@ -43,7 +46,7 @@
 				  <td class="success"><%= @event.end_time.strftime('%I:%M %p') %></td>
 				  <td class="info"><%= @event.description %></td>
 				  <td class="warning"><%= @event.comment %></td>
-				  <td class="danger"><%= link_to 'Edit', edit_event_path(@event),:class =>"btn btn-warning" %> <%= link_to 'Destroy', @event,:class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				  <td class="active"><%= link_to 'Edit', edit_event_path(@event),:class =>"btn btn-warning" %> <%= link_to 'Destroy', @event,:class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>

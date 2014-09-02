@@ -19,7 +19,9 @@
 var readyFunc = function() {
   console.log('Loaded, bro.');
 
-  $('body').on('click', '#add-day', showNewDayForm);
+  $('body').on('click', '.day-summary', function() {
+  	
+  });
 };
 
 // turbolinks workaround

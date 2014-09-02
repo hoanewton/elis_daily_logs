@@ -1,8 +1,11 @@
-
-<%= link_to('Update Baby Info', edit_baby_path(@baby),:class =>"btn btn-info")%>
-
 <h2><%= @baby.first_name %>  <%= @baby.last_name %> </h2>
   <%= image_tag @baby.photo.url(:thumb) %>
+  <button class='btn btn-success float-right'>
+    <%= link_to "All Babies", babies_path(@user) %>
+  </button>
+  <button class='btn btn-primary float-right'>
+    <%= link_to('Update Baby Info', edit_baby_path(@baby))%>
+  </button>
   <hr>
 <div class="table-responsive">
   <table class="table">
@@ -31,12 +34,8 @@
   </table>
 </div>
 <hr>
-<h4><%= @baby.first_name %>  <%= @baby.last_name %>'s days</h4>
-<button class="btn btn-success" id='add-day'>New Day</button>
- <!-- link_to('New Day', new_baby_day_path(@baby),:class =>"btn btn-success", :id => 'add-day')%>  -->
-<div class='new-day-form'>
-  <%= render 'days/form' %>
-</div>
+<h4><%= @baby.first_name %>'s days</h4>
+<button class="btn btn-primary" data-toggle="modal" data-target="#newDayModal"> Add Day </button> 
 <hr>
 <table class='table'>
   <thead>
@@ -45,20 +44,39 @@
       <th>Title</th>
       <th>Status</th>
       <th>Note</th>
-      <th>Action</th>
+      <th class="col-md-3 col-md-offset-3">Action</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @baby.days.each do |day| %>
+     <% @baby.days.each do |day| %>
       <tr>
         <td class='active'><%= link_to day.date.to_date, day_path(day) %></td>
         <td class='success'><%= link_to day.title, day_path(day) %></td>
         <td class='info'><%= day.status %></td>
-        <td class='active'><%= day.note %></td>
-        <td class='danger'><%= link_to 'Show', day_path(day),:class =>"btn btn-success" %> <%= link_to 'Edit', edit_day_path(day),:class =>"btn btn-warning" %> <%= link_to 'Delete', day_path(day),:class =>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='danger'><%= day.note %></td>
+        <td class='active'><%= link_to 'Show', day_path(day),:class =>"btn btn-success" %> <%= link_to 'Edit', edit_day_path(day),:class =>"btn btn-warning" %> <%= link_to 'Delete', day_path(day),:class =>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<!-- New form Modals -->
+<div class="modal fade" id="newDayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Day</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'days/form' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!-- <button class="edit btn btn-warning" data-toggle="modal" data-day-info='day.to_json%>' data-target="#editDayModal"> Edit </button> -->
