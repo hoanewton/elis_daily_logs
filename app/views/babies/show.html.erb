@@ -32,7 +32,12 @@
 </div>
 <hr>
 <h4><%= @baby.first_name %>  <%= @baby.last_name %>'s days</h4>
-<%= link_to('New Day', new_baby_day_path(@baby),:class =>"btn btn-success")%> <hr>
+<button class="btn btn-success" id='add-day'>New Day</button>
+ <!-- link_to('New Day', new_baby_day_path(@baby),:class =>"btn btn-success", :id => 'add-day')%>  -->
+<div class='new-day-form'>
+  <%= render 'days/form' %>
+</div>
+<hr>
 <table class='table'>
   <thead>
     <tr class='active'>

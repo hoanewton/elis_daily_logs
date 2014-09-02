@@ -18,8 +18,18 @@
 
 var readyFunc = function() {
   console.log('Loaded, bro.');
+
+  $('body').on('click', '#add-day', showNewDayForm);
 };
 
 // turbolinks workaround
 $(document).ready(readyFunc);
 $(document).on('page:load', readyFunc);
+
+function showNewDayForm (){
+	$('.new-day-form').slideToggle();
+}
+
+
+
+
