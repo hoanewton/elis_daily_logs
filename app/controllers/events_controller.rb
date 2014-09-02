@@ -30,24 +30,17 @@ class EventsController < ApplicationController
     @event.user_id = @user.id
     @day = Day.find(params[:day_id]) 
 
-# Oder events logic
     ordered_events = @day.events.sort_by  { |event| event.start_time }
     # @event = event
 
-    for i in 0...(ordered_events.length - 1)
-      if ordered_events[i].end_time != ordered_events[i+1].start_time
-        flash[:notice] = "You are leaving some time blank. Please fill in consecutive Events!"
+    if ordered_events != [] && @event.start_time > ordered_events.last.end_time
+        @event.start_time = ordered_events.last.end_time
+        flash[:notice] = "Start time of new Event just set to the last Event's end time"
       end
-    end
-
-    # if @day.events != [] && @event.start_time != @day.events.last.end_time
-    #   flash[:notice] = "You are leaving some time blank. Please fill in consecutive Events!"
-    # end
 
     # respond_to do |format|
       if @event.save
         @user.events << @event
-        # day = Day.find(params[:day_id])
         @day.events << @event 
         redirect_to day_path(@event.day_id)
         # format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -56,6 +49,15 @@ class EventsController < ApplicationController
         format.html { render :new }
         # format.json { render json: @event.errors, status: :unprocessable_entity }
       end
+
+# Oder events logic
+    
+    for i in 0...(ordered_events.length - 1)
+      if ordered_events[i].end_time != ordered_events[i+1].start_time
+        flash[:notice] = "Automatic range to consecutive events!"
+        # ordered_events[i+1].update({start_time: ordered_events[i].end_time})
+      end
+    end
     # end
   end
 
