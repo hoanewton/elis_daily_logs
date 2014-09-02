@@ -1,5 +1,5 @@
 
-<button><%= link_to('Update Baby Info', edit_baby_path(@baby))%></button>
+<%= link_to('Update Baby Info', edit_baby_path(@baby),:class =>"btn btn-info")%>
 
 <h2><%= @baby.first_name %>  <%= @baby.last_name %> </h2>
   <%= image_tag @baby.photo.url(:thumb) %>
@@ -32,7 +32,7 @@
 </div>
 <hr>
 <h4><%= @baby.first_name %>  <%= @baby.last_name %>'s days</h4>
-<button><%= link_to('New Day', new_baby_day_path(@baby))%></button> <hr>
+<%= link_to('New Day', new_baby_day_path(@baby),:class =>"btn btn-success")%> <hr>
 <table class='table'>
   <thead>
     <tr class='active'>
@@ -51,7 +51,7 @@
         <td class='success'><%= link_to day.title, day_path(day) %></td>
         <td class='info'><%= day.status %></td>
         <td class='active'><%= day.note %></td>
-        <td class='danger'><%= link_to 'Show', day_path(day) %> | <%= link_to 'Edit', edit_day_path(day) %> | <%= link_to 'Delete', day_path(day), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='danger'><%= link_to 'Show', day_path(day),:class =>"btn btn-success" %> <%= link_to 'Edit', edit_day_path(day),:class =>"btn btn-warning" %> <%= link_to 'Delete', day_path(day),:class =>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

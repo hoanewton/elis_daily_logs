@@ -20,15 +20,15 @@
   </div>
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class =>'form-control' %>
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.text_field :status, :class =>'form-control' %>
   </div>
   <div class="field">
     <%= f.label :note %><br>
-    <%= f.text_area :note %>
+    <%= f.text_area :note, :class =>'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -38,5 +38,5 @@
 
 
 
-<button><%= link_to 'Show', @day %></button>
-<button><%= link_to 'Back', day_path(@day) %></button>
+<button class="btn btn-success"><%= link_to 'Show', @day %></button>
+<button class="btn btn-info"><%= link_to 'Back', day_path(@day) %></button>
