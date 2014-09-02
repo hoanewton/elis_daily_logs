@@ -15,3 +15,11 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+var readyFunc = function() {
+  console.log('Loaded, bro.');
+};
+
+// turbolinks workaround
+$(document).ready(readyFunc);
+$(document).on('page:load', readyFunc);
