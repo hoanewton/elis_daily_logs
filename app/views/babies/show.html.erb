@@ -3,7 +3,7 @@
   <button class='btn btn-success float-right'>
     <%= link_to "All Babies", babies_path(@user) %>
   </button>
-  <button class='btn btn-primary float-right'>
+  <button class='btn btn-info float-right'>
     <%= link_to('Update Baby Info', edit_baby_path(@baby))%>
   </button>
   <hr>
@@ -35,7 +35,7 @@
 </div>
 <hr>
 <h4><%= @baby.first_name %>'s days</h4>
-<button class="btn btn-primary" data-toggle="modal" data-target="#newDayModal"> Add Day </button> 
+<button class="btn btn-info" data-toggle="modal" data-target="#newDayModal"> Add Day </button> 
 <hr>
 <table class='table'>
   <thead>
@@ -55,7 +55,7 @@
         <td class='success'><%= link_to day.title, day_path(day) %></td>
         <td class='info'><%= day.status %></td>
         <td class='danger'><%= day.note %></td>
-        <td class='active'> <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-warning" %><%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> </td>
+        <td class='active'> <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-info" %><%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> </td>
       </tr>
     <% end %>
   </tbody>

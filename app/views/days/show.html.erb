@@ -1,7 +1,7 @@
 <!-- <button><a href="#">Add Event</a></button> -->
 <h2><%= @baby.first_name %>'s day</h2>
 <%= image_tag @baby.photo.url(:thumb) %>  
-<button class="btn btn-primary float-right" data-toggle="modal" data-target="#summaryModal">Day Summary </button>
+<button class="btn btn-info float-right" data-toggle="modal" data-target="#summaryModal">Day Summary </button>
 
 <button class='btn btn-success float-right'><%= link_to "All Days", baby_path(@baby) %></button>
 <hr>
@@ -22,7 +22,7 @@
 	    	<td><%= @day.title %></td>
 	    	<td><%= @day.status %></td>
 	    	<td><%= @day.note %></td>
-	    	<td><%= link_to 'Delete', day_path(@day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(@day),:class =>"float-right btn btn-warning" %> </td>
+	    	<td><%= link_to 'Delete', day_path(@day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(@day),:class =>"float-right btn btn-info" %> </td>
 	    </tr>
 	   </tbody>
   </table>
@@ -50,7 +50,7 @@
 				  <td><%= event.end_time.strftime('%I:%M %p') %></td>
 				  <td><%= event.description %></td>
 				  <td><%= event.comment %></td>
-				  <td><%= link_to 'Destroy', event, :class => "float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_event_path(event),:class =>"float-right btn btn-warning" %></td>
+				  <td><%= link_to 'Destroy', event, :class => "float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_event_path(event),:class =>"float-right btn btn-info" %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
