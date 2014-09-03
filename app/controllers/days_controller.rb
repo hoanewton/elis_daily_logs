@@ -1,6 +1,13 @@
 class DaysController < ApplicationController
   before_action :set_day, only: [:show, :edit, :update, :destroy]
 
+  def email
+    day = Day.find(params[:id])
+    @baby = day.baby
+    BabyParentMailer.daily_report_email(day).deliver
+    redirect_to day_path(day)
+  end
+
   def summary
     @day = Day.find(params[:id])
     @baby = @day.baby
