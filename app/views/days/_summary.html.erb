@@ -1,5 +1,5 @@
 <h3><%= @baby.first_name %> <%= @baby.last_name %></h3>
-<h5><%= @day.date.to_date.strftime("%A") %> - <%= @day.date.to_date.strftime("%B %d") %>, <%= @day.date.to_date.strftime("%Y") %></h5>
+<h5><%= @day.date.to_date.strftime("%A") %> - <%= @day.date.to_date.strftime("%B %d") %>, <%= @day.date.to_date.strftime("%Y") %> ***** Sitter: <%= @baby.nanny_name %></h5>
 <hr>
 <div class="bg-info">
 	<h5>Note:</h5>
@@ -7,9 +7,43 @@
 </div><br>
 
 <div>
-	<h5 class='nap-font'>Naps</h5>
-	<% naps = @day.events.select{ |event| event.description == "Nap"} %>
-	<% naps.each do |nap| %>
-		<p><%= nap.start_time.strftime('%I:%M %p') %> - <%= nap.end_time.strftime('%I:%M %p') %></p>
+	<h4 class='nap-font'>Naps</h4>
+	<% events = @day.events.select{ |event| event.description == "Nap"} %>
+	<% events.each do |event| %>
+		<p><%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %></p>
 	<% end %>
-</div>
+</div><br>
+
+<div>
+	<h4 class='meal-font'>Meals</h4>
+	<% events = @day.events.select{ |event| event.description == "Meal"} %>
+	<% events.each do |event| %>
+		<p><%= event.start_time.strftime('%I:%M %p') %> - <%= event.comment %></p>
+	<% end %>
+</div><br>
+
+<div>
+	<h4 class='diaper-font'>Diapers</h4>
+	<% events = @day.events.select{ |event| event.description == "Diaper"} %>
+	<% events.each do |event| %>
+		<p><%= event.start_time.strftime('%I:%M %p') %> - <%= event.comment %></p>
+	<% end %>
+</div><br>
+
+<div>
+	<h4 class='activity-font'>Activities</h4>
+	<% events = @day.events.select{ |event| event.description == "Activity"} %>
+	<% events.each do |event| %>
+		<p><%= event.start_time.strftime('%I:%M %p') %> - <%= event.comment %></p>
+	<% end %>
+</div><br>
+
+<% events = @day.events.select{ |event| event.description == "Other"} %>
+<% if events =! [] %>
+<div>
+	<h4 class='other-activity-font'>Others</h4>
+	<% events.each do |event| %>
+		<p><%= event.start_time.strftime('%I:%M %p') %> - <%= event.comment %></p>
+	<% end %>
+<% end %>
+</div><br>

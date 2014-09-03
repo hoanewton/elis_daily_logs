@@ -51,11 +51,11 @@
   <tbody>
      <% @baby.days.each do |day| %>
       <tr>
-        <td class='active'><%= link_to day.date.to_date, day_path(day) %></td>
+        <td class='active'><%= link_to day.date.to_date.strftime("%a %b %d %y"), day_path(day) %></td>
         <td class='success'><%= link_to day.title, day_path(day) %></td>
         <td class='info'><%= day.status %></td>
         <td class='danger'><%= day.note %></td>
-        <td class='active'><%= link_to 'Show', day_path(day),:class =>"btn btn-success" %> <%= link_to 'Edit', edit_day_path(day),:class =>"btn btn-warning" %> <%= link_to 'Delete', day_path(day),:class =>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='active'> <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-warning" %><%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> </td>
       </tr>
     <% end %>
   </tbody>

@@ -19,9 +19,9 @@
 var readyFunc = function() {
   console.log('Loaded, bro.');
 
-  $('body').on('click', '.day-summary', function() {
+  // $('body').on('click', '.day-summary', function() {
   	
-  });
+  // });
 };
 
 // turbolinks workaround

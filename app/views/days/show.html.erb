@@ -12,13 +12,17 @@
 	      <th>Date</th>
 	      <th>Title</th>
 	      <th>Status</th>
+	      <th>Note</th>
+	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	    <tr>
-	    	<td class="success"><%= @day.date.to_date %></td>
-	    	<td class="warning"><%= @day.title %></td>
-	    	<td class="danger"><%= @day.status %></td>
+	    	<td><%= @day.date.to_date %></td>
+	    	<td><%= @day.title %></td>
+	    	<td><%= @day.status %></td>
+	    	<td><%= @day.note %></td>
+	    	<td><%= link_to 'Delete', day_path(@day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(@day),:class =>"float-right btn btn-warning" %> </td>
 	    </tr>
 	   </tbody>
   </table>
@@ -35,7 +39,7 @@
 	      <th>End</th>
 	      <th>Description</th>
 	      <th>Comment</th>
-	      <th>Action</th>
+	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -46,7 +50,7 @@
 				  <td><%= event.end_time.strftime('%I:%M %p') %></td>
 				  <td><%= event.description %></td>
 				  <td><%= event.comment %></td>
-				  <td><%= link_to 'Edit', edit_event_path(event),:class =>"btn btn-warning" %> <%= link_to 'Destroy', event, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				  <td><%= link_to 'Destroy', event, :class => "float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_event_path(event),:class =>"float-right btn btn-warning" %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
