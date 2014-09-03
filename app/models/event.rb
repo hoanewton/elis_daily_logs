@@ -5,4 +5,19 @@ class Event < ActiveRecord::Base
   def self.event_types
   	["Nap", "Meal", "Diaper", "Activity", "Other"]
   end
+
+  def css_class
+  	case description
+  		when 'Nap'
+  			'warning'
+  		when 'Diaper'
+  			'success'
+  		when 'Activity'
+  			'info'
+  		when 'Meal'
+  			'danger'
+		  else
+		  	'active' 
+		end
+  end
 end

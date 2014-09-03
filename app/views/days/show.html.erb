@@ -40,14 +40,13 @@
 	  </thead>
 	  <tbody>
 	  <% @day.events.sort_by	{ |event| event.start_time }.each do |event| %>
-	   	<% @event = event %>
 
-	      <tr class="active">
-	      	<td class="active"><%= @event.start_time.strftime('%I:%M %p') %></td>
-				  <td class="success"><%= @event.end_time.strftime('%I:%M %p') %></td>
-				  <td class="info"><%= @event.description %></td>
-				  <td class="warning"><%= @event.comment %></td>
-				  <td class="active"><%= link_to 'Edit', edit_event_path(@event),:class =>"btn btn-warning" %> <%= link_to 'Destroy', @event,:class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      <tr class="<%= event.css_class %>" >
+	      	<td><%= event.start_time.strftime('%I:%M %p') %></td>
+				  <td><%= event.end_time.strftime('%I:%M %p') %></td>
+				  <td><%= event.description %></td>
+				  <td><%= event.comment %></td>
+				  <td><%= link_to 'Edit', edit_event_path(event),:class =>"btn btn-warning" %> <%= link_to 'Destroy', event, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
