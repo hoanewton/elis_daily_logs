@@ -75,9 +75,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Email parent</button> -->
-        <%= link_to "Email parent", email_path(@day) %>
-        <button type="button" class="btn btn-info"><%= link_to 'Edit', summary_path(@day) %></button>
+        <button type="button" class="btn btn-primary"><%= link_to "Email parent", email_path(@day) %></button>
+        <button type="button" class="btn btn-info"><%= link_to 'Open', summary_path(@day) %></button>
       </div>
     </div>
   </div>
