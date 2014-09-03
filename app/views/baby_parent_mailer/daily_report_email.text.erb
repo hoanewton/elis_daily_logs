@@ -1,0 +1,23 @@
+Thank you for using Elis-tracker.herokuapp.com, <%= @baby.parent_name %>
+=============================================================================
+<%= @baby.first_name %> <%= @baby.last_name %>
+<%= @day.date.to_date.strftime("%A") %> - <%= @day.date.to_date.strftime("%B %d") %>, <%= @day.date.to_date.strftime("%Y") %> ***** Sitter: <%= @baby.nanny_name %>
+-----------------------------------------------------------------------------
+Note: <%= @day.note %>
+Naps: <% events = @day.events.select{ |event| event.description == "Nap"} %>
+	<% events.each do |event| %>
+		<%= event.start_time.strftime('%I:%M %p') %> - <%= event.end_time.strftime('%I:%M %p') %>
+	<% end %>
+Meals: <% events = @day.events.select{ |event| event.description == "Meal"} %>
+	<% events.each do |event| %>
+		<%= event.start_time.strftime('%I:%M %p') %> - <%= event.comment %>
+	<% end %>
+Diapers: <% events = @day.events.select{ |event| event.description == "Diaper"} %>
+	<% events.each do |event| %>
+		<%= event.start_time.strftime('%I:%M %p') %> - <%= event.comment %>
+	<% end %>
+Activities: <% events = @day.events.select{ |event| event.description == "Activity"} %>
+	<% events.each do |event| %>
+		<%= event.start_time.strftime('%I:%M %p') %> - <%= event.comment %>
+	<% end %>
+-----------------------------------------------------------------------------
