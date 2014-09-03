@@ -1,6 +1,11 @@
 class DaysController < ApplicationController
   before_action :set_day, only: [:show, :edit, :update, :destroy]
 
+  def summary
+    @day = Day.find(params[:id])
+    @baby = @day.baby
+  end
+
   # GET /days
   # GET /days.json
   def index

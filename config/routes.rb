@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-
+  get '/days/:id/summary', to: 'days#summary', as: 'summary'
   root to: 'home#index'
   resources :babies do 
   	resources :days, shallow: true do

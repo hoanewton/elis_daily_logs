@@ -1,0 +1,15 @@
+<h3><%= @baby.first_name %> <%= @baby.last_name %></h3>
+<h5><%= @day.date.to_date.strftime("%A") %> - <%= @day.date.to_date.strftime("%B %d") %>, <%= @day.date.to_date.strftime("%Y") %></h5>
+<hr>
+<div class="bg-info">
+	<h5>Note:</h5>
+	<p><%= @day.note %></p>
+</div><br>
+
+<div>
+	<h5 class='nap-font'>Naps</h5>
+	<% naps = @day.events.select{ |event| event.description == "Nap"} %>
+	<% naps.each do |nap| %>
+		<p><%= nap.start_time.strftime('%I:%M %p') %> - <%= nap.end_time.strftime('%I:%M %p') %></p>
+	<% end %>
+</div>

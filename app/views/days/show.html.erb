@@ -1,7 +1,8 @@
 <!-- <button><a href="#">Add Event</a></button> -->
 <h2><%= @baby.first_name %>'s day</h2>
 <%= image_tag @baby.photo.url(:thumb) %>  
-<button class='btn btn-primary day-summary float-right'>Day Summary</button>
+<button class="btn btn-primary float-right" data-toggle="modal" data-target="#summaryModal">Day Summary </button>
+
 <button class='btn btn-success float-right'><%= link_to "All Days", baby_path(@baby) %></button>
 <hr>
 <div class="table-responsive">
@@ -51,4 +52,29 @@
 	    <% end %>
 	  </tbody>
   </table>
+</div>
+
+<!-- Button trigger modal -->
+<!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="summaryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Daily report</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'summary' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Email parent</button>
+        <button type="button" class="btn btn-info"><%= link_to 'Edit', summary_path(@day) %></button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -27,11 +27,3 @@ var readyFunc = function() {
 // turbolinks workaround
 $(document).ready(readyFunc);
 $(document).on('page:load', readyFunc);
-
-function showNewDayForm (){
-	$('.new-day-form').slideToggle();
-}
-
-
-
-
