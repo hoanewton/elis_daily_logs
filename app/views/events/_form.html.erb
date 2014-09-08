@@ -15,8 +15,8 @@
 <form role='form'>
   <div class="form-group">
     <%= f.label :start_time %>
-    <%= f.time_select :start_time, {ampm: true} %>  <%= f.label :end_time %>
-    <%= f.time_select :end_time, {ampm: true} %> 
+    <%= f.time_field :start_time, {ampm: true} %>  <%= f.label :end_time %>
+    <%= f.time_field :end_time, {ampm: true} %> 
     <%= f.label :description %>
     <%= f.select :description, options_for_select(Event.event_types) %>
   </div>
