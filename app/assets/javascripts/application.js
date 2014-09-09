@@ -19,9 +19,7 @@
 var readyFunc = function() {
   console.log('Loaded, bro.');
 
-  // $('body').on('click', '.day-summary', function() {
-  	
-  // });
+  $('body').on('click', '.search-day', showSearchForm );
 };
 
 // turbolinks workaround

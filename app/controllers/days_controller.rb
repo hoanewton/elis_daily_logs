@@ -1,6 +1,14 @@
 class DaysController < ApplicationController
   before_action :set_day, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @baby = Baby.find(params[:baby_id])
+    @days = @baby.days.search params[:search]
+    @day = @days.find(params[:id])
+
+    # @days = Day.search params[:search]
+  end
+
   def email
     day = Day.find(params[:id])
     @baby = day.baby
@@ -18,6 +26,7 @@ class DaysController < ApplicationController
   def index
     @baby = Baby.find(params[:baby_id])
     @days = @baby.days
+    @day = days.search(params[:search])
     redirect_to baby_path(@baby)
   end
 

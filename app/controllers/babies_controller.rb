@@ -22,7 +22,7 @@ class BabiesController < ApplicationController
 
 	def show
 		@baby = Baby.find(params[:id])
-		@days = @baby.days
+		@days = @baby.days.where("date > '" + 31.days.ago.strftime('%Y-%m-%d') + "'").order(date: :desc)
 		@day = Day.new
 	end
 

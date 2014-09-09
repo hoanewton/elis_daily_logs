@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   get '/days/:id/summary', to: 'days#summary', as: 'summary'
   get '/days/:id/email', to: 'days#email', as: 'email'
+  get '/babies/:id/search', to: 'days#search', as: 'search'
 
   root to: 'home#index'
   resources :babies do 

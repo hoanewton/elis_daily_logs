@@ -36,30 +36,36 @@
 <hr>
 <h4><%= @baby.first_name %>'s days</h4>
 <button class="btn btn-info" data-toggle="modal" data-target="#newDayModal"> Add Day </button> 
-<hr>
-<table class='table'>
-  <thead>
-    <tr class='active'>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Status</th>
-      <th>Note</th>
-      <th class="col-md-3 col-md-offset-3">Action</th>
-    </tr>
-  </thead>
+<button class="last-month btn btn-info"> Search a month </button>
+<button class="search-day btn btn-info"> Search a day </button>
 
-  <tbody>
-     <% @baby.days.each do |day| %>
-      <tr>
-        <td class='active'><%= link_to day.date.to_date.strftime("%a %b %d %y"), day_path(day) %></td>
-        <td class='success'><%= link_to day.title, day_path(day) %></td>
-        <td class='info'><%= day.status %></td>
-        <td class='danger'><%= day.note %></td>
-        <td class='active'> <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-info" %><%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> </td>
+<hr>
+
+<div class='all-days'>
+  <table class='table'>
+    <thead>
+      <tr class='active'>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Note</th>
+        <th class="col-md-3 col-md-offset-3">Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    
+    <tbody>
+       <% @days.each do |day| %>
+        <tr>
+          <td class='active'><%= link_to day.date.to_date.strftime("%a %b %d %y"), day_path(day) %></td>
+          <td class='success'><%= link_to day.title, day_path(day) %></td>
+          <td class='info'><%= day.status %></td>
+          <td class='danger'><%= day.note %></td>
+          <td class='active'> <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-info" %><%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <!-- New form Modals -->
 <div class="modal fade" id="newDayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
