@@ -21,7 +21,7 @@
   <%= f.text_field :phone_number, autofocus: true %></div>
 
   <div><%= f.label :role %><br />
-  <%= f.text_field :role, autofocus: true %></div>
+  <%= f.select :role, options_for_select(["Sitter", "Parent"], "Sitter"), autofocus: true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
