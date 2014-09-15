@@ -33,10 +33,10 @@ class EventsController < ApplicationController
     ordered_events = @day.events.sort_by  { |event| event.start_time }
     # @event = event
 
-    if ordered_events != [] && @event.start_time > ordered_events.last.end_time
-        @event.start_time = ordered_events.last.end_time
-        flash[:notice] = "Start time of new Event just set to the last Event's end time"
-      end
+    # if ordered_events != [] && @event.start_time > ordered_events.last.end_time
+    #     @event.start_time = ordered_events.last.end_time
+    #     flash[:notice] = "Start time of new Event just set to the last Event's end time"
+    #   end
 
     # respond_to do |format|
       if @event.save
@@ -46,7 +46,9 @@ class EventsController < ApplicationController
         # format.html { redirect_to @event, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new }
+        flash[:alert] = "Start time / End time can not be blank"
+        redirect_to day_path(@day)
+        # format.html { render :new }
         # format.json { render json: @event.errors, status: :unprocessable_entity }
       end
 
@@ -54,7 +56,7 @@ class EventsController < ApplicationController
     
     for i in 0...(ordered_events.length - 1)
       if ordered_events[i].end_time != ordered_events[i+1].start_time
-        flash[:notice] = "Automatic range to consecutive events!"
+        flash[:alert] = "Automatic range to consecutive events!"
         # ordered_events[i+1].update({start_time: ordered_events[i].end_time})
       end
     end

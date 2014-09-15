@@ -5,7 +5,7 @@
   <table class="table">
   	<thead>
 	    <tr class="active">
-	    	<th>Imgae</th>
+	    	<th>Image</th>
 	      <th>Name</th>
 	      <th>Gender</th>
 	      <th>Age</th>
@@ -16,7 +16,11 @@
 		<% @babies.sort_by	{ |baby| baby.created_at }.reverse.each do |baby| %>
 	  <tbody>
 	    <tr>
-				<td class="danger"><%= image_tag baby.photo.url(:thumb) %></td>
+				<td class="danger">
+					<%= link_to baby_path(baby) do %>
+	    			<%= image_tag baby.photo.url(:thumb)%>
+					<% end %>
+				</td>
 	    	<td class="warning"><%= link_to baby.first_name, baby_path(baby) %> <%= link_to baby.last_name, baby_path(baby) %></td>
 	    	<td class="success"><%= baby.gender %></td>
 	    	<td class="info"><%= baby.age %></td>

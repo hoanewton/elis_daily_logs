@@ -1,32 +1,11 @@
 <!-- <button><a href="#">Add Event</a></button> -->
 <h2><%= @baby.first_name %>'s day</h2>
-<%= image_tag @baby.photo.url(:thumb) %>  
-<button class="btn btn-info float-right" data-toggle="modal" data-target="#summaryModal">Day Summary </button>
+<%= image_tag @baby.photo.url(:thumb) %> <strong><%= @day.date.to_date %></strong> ** <%= @day.title %> ** <%= @day.status %> ** Note: <%= @day.note %><hr> 
+<button class='btn btn-danger float-right'><%= link_to "Delete", day_path(@day), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<button class='btn btn-info float-right'><%= link_to "Edit", edit_day_path(@day) %></button>
+<button class='btn btn-success float-right'><%= link_to "Back", baby_path(@baby) %></button>
+<button class="btn btn-active float-right" data-toggle="modal" data-target="#summaryModal"> Summary </button><br>
 
-<button class='btn btn-success float-right'><%= link_to "All Days", baby_path(@baby) %></button>
-<hr>
-<div class="table-responsive">
-  <table class="table">
-  	<thead>
-	    <tr class="active">
-	      <th>Date</th>
-	      <th>Title</th>
-	      <th>Status</th>
-	      <th>Note</th>
-	      <th></th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr>
-	    	<td><%= @day.date.to_date %></td>
-	    	<td><%= @day.title %></td>
-	    	<td><%= @day.status %></td>
-	    	<td><%= @day.note %></td>
-	    	<td><%= link_to 'Delete', day_path(@day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(@day),:class =>"float-right btn btn-info" %> </td>
-	    </tr>
-	   </tbody>
-  </table>
-</div>
 <div>
 	<%= render 'events/form'%>
 </div>
@@ -46,21 +25,21 @@
 	  <% @day.events.sort_by	{ |event| event.start_time }.each do |event| %>
 
 	      <tr class="<%= event.css_class %>" >
-	      	<td><%= event.start_time.strftime('%I:%M %p') %></td>
-				  <td><%= event.end_time.strftime('%I:%M %p') %></td>
-				  <td><%= event.description %></td>
-				  <td><%= event.comment %></td>
-				  <td><%= link_to 'Destroy', event, :class => "float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_event_path(event),:class =>"float-right btn btn-info" %></td>
+	      	<% if event.start_time %>
+		      	<td><%= event.start_time.strftime('%I:%M %p') %></td>
+					  <td><%= event.end_time.strftime('%I:%M %p') %></td>
+					  <td><%= event.description %></td>
+					  <td><%= event.comment %></td>
+					  <td><%= link_to 'Destroy', event, :class => "float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_event_path(event),:class =>"float-right btn btn-info" %>
+					  </td>
+				  <% else %>
+				  	<% notice %>
+				  <% end %>
 	      </tr>
 	    <% end %>
 	  </tbody>
   </table>
 </div>
-
-<!-- Button trigger modal -->
-<!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="summaryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
