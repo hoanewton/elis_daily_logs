@@ -1,13 +1,16 @@
 <h2><%= @baby.first_name %>  <%= @baby.last_name %> </h2>
-  <%= image_tag @baby.photo.url(:thumb) %>
-  <button class='btn btn-success float-right'>
-    <%= link_to "All Babies", babies_path(@user) %>
-  </button>
-  <button class='btn btn-info float-right'>
-    <%= link_to('Update Baby Info', edit_baby_path(@baby))%>
-  </button>
-  <hr>
-<div class="table-responsive">
+<%= image_tag @baby.photo.url(:thumb) %> <%= @baby.gender %>| Age: <%= @baby.age %> | <%= @baby.special_condition %> | Parent: <%= @baby.parent_name %>, <%= @baby.parent_email %>
+<button class='btn btn-danger float-right'>
+  <%= link_to 'Delete', baby_path(@baby), method: :delete, data: { confirm: 'Are you sure?' } %>
+</button>
+<button class='btn btn-info float-right'>
+  <%= link_to('Update', edit_baby_path(@baby))%>
+</button>
+<button class='btn btn-success float-right'>
+  <%= link_to "Back", babies_path(@user) %>
+</button>
+<hr>
+<!-- <div class="table-responsive">
   <table class="table">
     <thead>
       <tr class="active">
@@ -33,11 +36,11 @@
     </tbody>
   </table>
 </div>
-<hr>
-<h4><%= @baby.first_name %>'s days</h4>
+<hr> -->
+<!-- <h4><%= @baby.first_name %>'s days</h4> -->
 <button class="btn btn-info" data-toggle="modal" data-target="#newDayModal"> Add Day </button> 
-<button class="last-month btn btn-info"> Search a month </button>
-<button class="search-day btn btn-info"> Search a day </button>
+<!-- <button class="last-month btn btn-info"> Search a month </button>
+<button class="search-day btn btn-info"> Search a day </button> -->
 
 <hr>
 
@@ -60,7 +63,11 @@
           <td class='success'><%= link_to day.title, day_path(day) %></td>
           <td class='info'><%= day.status %></td>
           <td class='danger'><%= day.note %></td>
-          <td class='active'> <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-info" %><%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> </td>
+          <td class='active'> 
+            <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-info" %>
+            <%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> 
+          </td>
         </tr>
       <% end %>
     </tbody>
