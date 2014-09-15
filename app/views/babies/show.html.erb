@@ -1,44 +1,16 @@
 <h2><%= @baby.first_name %>  <%= @baby.last_name %> </h2>
 <%= image_tag @baby.photo.url(:thumb) %> <%= @baby.gender %>| Age: <%= @baby.age %> | <%= @baby.special_condition %> | Parent: <%= @baby.parent_name %>, <%= @baby.parent_email %>
-<button class='btn btn-danger float-right'>
-  <%= link_to 'Delete', baby_path(@baby), method: :delete, data: { confirm: 'Are you sure?' } %>
+<button class='btn btn-danger btn-xs float-right'>
+  <%= link_to 'delete', baby_path(@baby), method: :delete, data: { confirm: 'Are you sure?' } %>
 </button>
-<button class='btn btn-info float-right'>
-  <%= link_to('Update', edit_baby_path(@baby))%>
+<button class='btn btn-info btn-xs float-right'>
+  <%= link_to('update', edit_baby_path(@baby))%>
 </button>
-<button class='btn btn-success float-right'>
-  <%= link_to "Back", babies_path(@user) %>
+<button class='btn btn-success btn-xs float-right'>
+  <%= link_to "back", babies_path(@user) %>
 </button>
-<hr>
-<!-- <div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr class="active">
-        <th>Gender</th>
-        <th>Age</th>
-        <th>Parent</th>
-        <th>Parent Email</th>
-        <th>Sitter</th>
-        <th>Sitter Email</th>
-        <th>Special Note</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="active"><%= @baby.gender %></td>
-        <td class="success"><%= @baby.age %></td>
-        <td class="info"><%= @baby.parent_name %></td>
-        <td class="active"><%= @baby.parent_email %></td>
-        <td class="danger"><%= @baby.nanny_name %></td>
-        <td class="success"><%= @baby.nanny_email %></td>
-        <td class="active"><%= @baby.special_condition %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<hr> -->
-<!-- <h4><%= @baby.first_name %>'s days</h4> -->
-<button class="btn btn-info" data-toggle="modal" data-target="#newDayModal"> Add Day </button> 
+<button class="btn btn-active btn-xs float-right" data-toggle="modal" data-target="#newDayModal"> add day </button> 
+
 <!-- <button class="last-month btn btn-info"> Search a month </button>
 <button class="search-day btn btn-info"> Search a day </button> -->
 
@@ -64,9 +36,9 @@
           <td class='info'><%= day.status %></td>
           <td class='danger'><%= day.note %></td>
           <td class='active'> 
-            <%= link_to 'Delete', day_path(day),:class =>"float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to 'Edit', edit_day_path(day),:class =>"float-right btn btn-info" %>
-            <%= link_to 'Show', day_path(day),:class =>"float-right btn btn-success" %> 
+            <%= link_to 'delete', day_path(day),:class =>"float-right btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'edit', edit_day_path(day),:class =>"float-right btn btn-info btn-xs" %>
+            <%= link_to 'show', day_path(day),:class =>"float-right btn btn-success btn-xs" %> 
           </td>
         </tr>
       <% end %>
@@ -80,13 +52,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Day</h4>
+        <h4 class="modal-title" id="myModalLabel">add day</h4>
       </div>
       <div class="modal-body">
         <%= render 'days/form' %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
       </div>
     </div>
   </div>

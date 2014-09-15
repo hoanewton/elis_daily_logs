@@ -1,10 +1,10 @@
-<!-- <button><a href="#">Add Event</a></button> -->
+
 <h2><%= @baby.first_name %>'s day</h2>
 <%= image_tag @baby.photo.url(:thumb) %> <strong><%= @day.date.to_date %></strong> ** <%= @day.title %> ** <%= @day.status %> ** Note: <%= @day.note %><hr> 
-<button class='btn btn-danger float-right'><%= link_to "Delete", day_path(@day), method: :delete, data: { confirm: 'Are you sure?' } %></button>
-<button class='btn btn-info float-right'><%= link_to "Edit", edit_day_path(@day) %></button>
-<button class='btn btn-success float-right'><%= link_to "Back", baby_path(@baby) %></button>
-<button class="btn btn-active float-right" data-toggle="modal" data-target="#summaryModal"> Summary </button><br>
+<button class='btn btn-danger btn-xs float-right'><%= link_to "delete", day_path(@day), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<button class='btn btn-info btn-xs float-right'><%= link_to "edit", edit_day_path(@day) %></button>
+<button class='btn btn-success btn-xs float-right'><%= link_to "back", baby_path(@baby) %></button>
+<button class="btn btn-active btn-xs float-right" data-toggle="modal" data-target="#summaryModal"> summary </button><br><br>
 
 <div>
 	<%= render 'events/form'%>
@@ -30,7 +30,7 @@
 					  <td><%= event.end_time.strftime('%I:%M %p') %></td>
 					  <td><%= event.description %></td>
 					  <td><%= event.comment %></td>
-					  <td><%= link_to 'Destroy', event, :class => "float-right btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'Edit', edit_event_path(event),:class =>"float-right btn btn-info" %>
+					  <td><%= link_to 'remove', event, :class => "float-right btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %><%= link_to 'edit', edit_event_path(event),:class =>"float-right btn btn-info btn-xs" %>
 					  </td>
 				  <% else %>
 				  	<% notice %>
@@ -53,9 +53,9 @@
         <%= render 'summary' %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"><%= link_to "Email parent", email_path(@day) %></button>
-        <button type="button" class="btn btn-info"><%= link_to 'Open', summary_path(@day) %></button>
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-xs"><%= link_to "Email parent", email_path(@day) %></button>
+        <button type="button" class="btn btn-info btn-xs"><%= link_to 'Open', summary_path(@day) %></button>
       </div>
     </div>
   </div>
